@@ -1,0 +1,169 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<!-- Custom CSS for enhanced styling -->
+<style>
+    .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+    .hero p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-header {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        font-weight: 600;
+        border-radius: 10px 10px 0 0;
+    }
+    .app-item {
+        border-radius: 8px;
+        border: 1px solid #e9ecef;
+        transition: box-shadow 0.2s;
+    }
+    .app-item:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 25px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+    .btn-outline-primary {
+        border-radius: 25px;
+        font-weight: 600;
+    }
+    .text-muted {
+        color: #6c757d !important;
+    }
+    .fw-bold {
+        font-weight: 700;
+    }
+    .small {
+        font-size: 0.875rem;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="hero">
+        <div class="d-flex justify-content-between align-items-center flex-wrap">
+            <div class="mb-3 mb-md-0">
+                <h1 class="h3 mb-1">Online Doctor Appointment</h1>
+                <p class="mb-0 text-muted">Book appointments with doctors quickly — simple demo app built with ASP.NET Razor Pages.</p>
+            </div>
+            <div>
+                <a class="btn btn-primary btn-lg" href="/Book">
+                    <i class="fas fa-calendar-plus me-2"></i>Book Appointment
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8 col-md-7 mb-4">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center">
+                    <i class="fas fa-calendar-check me-2"></i>Upcoming Appointments
+                </div>
+                <div class="card-body">
+                    @if (!Model.Appointments.Any())
+                    {
+                        <div class="text-center text-muted py-5">
+                            <i class="fas fa-calendar-times fa-3x mb-3"></i>
+                            <p>No appointments booked yet.</p>
+                            <a href="/Book" class="btn btn-outline-primary">Book Your First Appointment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="list-group list-group-flush">
+                            @foreach (var a in Model.Appointments)
+                            {
+                                <div class="list-group-item mb-3 app-item p-3">
+                                    <div class="d-flex justify-content-between align-items-start flex-wrap">
+                                        <div class="flex-grow-1 me-3">
+                                            <div class="fw-bold mb-1">
+                                                <i class="fas fa-user me-2"></i>@a.PatientName
+                                            </div>
+                                            <div class="text-muted small mb-2">
+                                                <i class="fas fa-user-md me-1"></i>Dr. @a.DoctorName — @a.Email 
+                                                @if(!string.IsNullOrEmpty(a.Phone))
+                                                { 
+                                                    <text>| <i class="fas fa-phone me-1"></i>@a.Phone</text> 
+                                                }
+                                            </div>
+                                            @if(!string.IsNullOrWhiteSpace(a.Message))
+                                            {
+                                                <div class="mt-2 small text-muted">
+                                                    <i class="fas fa-comment me-1"></i>@a.Message
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="text-end">
+                                            <div class="fw-bold text-primary">
+                                                <i class="fas fa-calendar me-1"></i>@a.Date.ToString("yyyy-MM-dd")
+                                            </div>
+                                            <div class="text-muted small">
+                                                <i class="fas fa-clock me-1"></i>@a.Time
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-5">
+            <div class="card h-100">
+                <div class="card-header d-flex align-items-center">
+                    <i class="fas fa-info-circle me-2"></i>Info
+                </div>
+                <div class="card-body">
+                    <p class="mb-3">
+                        <strong><i class="fas fa-envelope me-2"></i>Contact:</strong> 
+                        <a href="mailto:support@onlinedoctor.local" class="text-decoration-none">support@onlinedoctor.local</a>
+                    </p>
+                    <p class="mb-3">
+                        <strong><i class="fas fa-phone me-2"></i>Phone:</strong> 
+                        <a href="tel:+92-300-0000000" class="text-decoration-none">+92-300-0000000</a>
+                    </p>
+                    <a href="/Contact" class="btn btn-outline-primary btn-sm mt-3 w-100">
+                        <i class="fas fa-paper-plane me-2"></i>Contact Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Font Awesome for icons (add this to your layout if not already) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

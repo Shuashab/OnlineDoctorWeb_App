@@ -1,0 +1,114 @@
+@page
+@model OnlineDoctorApp.Pages.AboutModel
+@{
+    ViewData["Title"] = "About";
+}
+
+<!-- Custom CSS for enhanced styling -->
+<style>
+    .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-header {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        font-weight: 600;
+        border-radius: 10px 10px 0 0;
+    }
+    .feature-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        transition: background 0.2s;
+    }
+    .feature-item:hover {
+        background: #e9ecef;
+    }
+    .feature-item i {
+        font-size: 1.5rem;
+        color: #667eea;
+        margin-right: 1rem;
+    }
+    .text-muted {
+        color: #6c757d !important;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="hero">
+        <h1>About Us</h1>
+        <p>Learn more about our mission to make healthcare appointments simple and accessible.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <i class="fas fa-info-circle me-2"></i>Our Story
+                </div>
+                <div class="card-body">
+                    <p class="mb-4">This is a simple Online Doctor Appointment website built with ASP.NET Razor Pages. Our goal is to provide an easy-to-use platform for booking medical appointments quickly and efficiently.</p>
+                    
+                    <h5 class="mb-3">Key Features</h5>
+                    <div class="feature-item">
+                        <i class="fas fa-calendar-check"></i>
+                        <div>
+                            <strong>Easy Booking:</strong> Schedule appointments with your preferred doctors in just a few clicks.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-user-md"></i>
+                        <div>
+                            <strong>Doctor Selection:</strong> Choose from a variety of doctors and specialties.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Flexible Timing:</strong> Book appointments at your convenience.
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Contact Support:</strong> Reach out to us anytime for assistance.
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <p class="text-muted mb-0">We are committed to improving healthcare accessibility through technology. Thank you for choosing our platform!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Font Awesome for icons (add this to your layout if not already) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>

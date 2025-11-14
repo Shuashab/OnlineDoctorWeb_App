@@ -1,0 +1,173 @@
+@page
+@model BookModel
+@{
+    ViewData["Title"] = "Book Appointment";
+}
+
+<!-- Custom CSS for enhanced styling -->
+<style>
+    .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 3rem 2rem;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+    }
+    .card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .card:hover {
+        transform: translateY(-5px);
+    }
+    .card-header {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        font-weight: 600;
+        border-radius: 10px 10px 0 0;
+    }
+    .form-label {
+        font-weight: 600;
+        color: #495057;
+    }
+    .form-control {
+        border-radius: 8px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+    }
+    .input-group-text {
+        background: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 8px 0 0 8px;
+    }
+    .btn-primary {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 25px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        transition: background 0.2s;
+    }
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+    .alert {
+        border-radius: 8px;
+    }
+    .form-error {
+        color: #dc3545;
+        font-size: 0.875rem;
+    }
+</style>
+
+<div class="container-fluid">
+    <div class="hero">
+        <h1>Book Your Appointment</h1>
+        <p>Schedule a visit with your preferred doctor easily and quickly. Fill in the details below.</p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card">
+                <div class="card-header d-flex align-items-center">
+                    <i class="fas fa-calendar-plus me-2"></i>Appointment Details
+                </div>
+                <div class="card-body">
+                    @if (Model.Success)
+                    {
+                        <div class="alert alert-success d-flex align-items-center">
+                            <i class="fas fa-check-circle me-2"></i>Appointment booked successfully!
+                        </div>
+                    }
+
+                    <form method="post" novalidate>
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-user me-1"></i>Patient Name
+                            </label>
+                            <input asp-for="Input.PatientName" class="form-control" />
+                            <span class="form-error" asp-validation-for="Input.PatientName"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-envelope me-1"></i>Email
+                            </label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span class="form-error" asp-validation-for="Input.Email"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-phone me-1"></i>Phone
+                            </label>
+                            <input asp-for="Input.Phone" class="form-control" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-user-md me-1"></i>Doctor Name
+                            </label>
+                            <input asp-for="Input.DoctorName" class="form-control" />
+                            <span class="form-error" asp-validation-for="Input.DoctorName"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-calendar me-1"></i>Date
+                                </label>
+                                <input asp-for="Input.Date" type="date" class="form-control" />
+                                <span class="form-error" asp-validation-for="Input.Date"></span>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">
+                                    <i class="fas fa-clock me-1"></i>Time
+                                </label>
+                                <input asp-for="Input.Time" class="form-control" placeholder="e.g. 10:30 AM" />
+                                <span class="form-error" asp-validation-for="Input.Time"></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">
+                                <i class="fas fa-comment me-1"></i>Message (Optional)
+                            </label>
+                            <textarea asp-for="Input.Message" class="form-control" rows="3" placeholder="Any additional notes..."></textarea>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-calendar-check me-2"></i>Book Appointment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Include Font Awesome for icons (add this to your layout if not already) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

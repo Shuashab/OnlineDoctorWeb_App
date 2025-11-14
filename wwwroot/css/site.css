@@ -1,0 +1,103 @@
+/* Enhanced base styles for a polished, responsive design */
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Improved focus styles for better accessibility and visual feedback */
+.btn:focus, 
+.btn:active:focus, 
+.btn-link.nav-link:focus, 
+.form-control:focus, 
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.5), 0 0 0 0.25rem rgba(102, 126, 234, 0.4);
+  border-color: #667eea;
+  outline: none;
+}
+
+/* Body enhancements for a modern, cohesive look */
+body {
+  margin-bottom: 60px;
+  background: linear-gradient(135deg, #f7f9fc 0%, #e9ecef 100%);
+  color: #222;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Enhanced form-floating styles for better UX */
+.form-floating > .form-control-plaintext::placeholder, 
+.form-floating > .form-control::placeholder {
+  color: #6c757d;
+  text-align: end;
+  opacity: 0.7;
+  transition: opacity 0.2s, text-align 0.2s;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, 
+.form-floating > .form-control:focus::placeholder {
+  text-align: start;
+  opacity: 1;
+  color: #495057;
+}
+
+/* Additional global enhancements for consistency */
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: #667eea;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #333;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+/* Responsive tweaks for better mobile experience */
+@media (max-width: 767.98px) {
+  body {
+    margin-bottom: 40px;
+  }
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Utility classes for quick styling */
+.text-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.shadow-soft {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.border-radius-lg {
+  border-radius: 10px;
+}
